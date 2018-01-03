@@ -10,8 +10,56 @@ import UIKit
 import AVKit
 import AVFoundation
 import FirebaseAuth
+import Jukebox
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, JukeboxDelegate {
+    func jukeboxStateDidChange(_ jukebox: Jukebox) {
+        
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+//            self.indicator.alpha = jukebox.state == .loading ? 1 : 0
+            self.playPauseBtn.alpha = jukebox.state == .loading ? 0 : 1
+            self.playPauseBtn.isEnabled = jukebox.state == .loading ? false : true
+        })
+        
+        if jukebox.state == .ready {
+            playPauseBtn.setImage(UIImage(named: "play-btn"), for: UIControlState())
+        } else if jukebox.state == .loading  {
+            playPauseBtn.setImage(UIImage(named: "pause-btn"), for: UIControlState())
+        } else {
+            let imageName: String
+            switch jukebox.state {
+            case .playing, .loading:
+                imageName = "pause-btn"
+            case .paused, .failed, .ready:
+                imageName = "play-btn"
+            }
+            playPauseBtn.setImage(UIImage(named: imageName), for: UIControlState())
+        }
+        
+        print("Jukebox state changed to \(jukebox.state)")
+        
+    }
+    
+    func jukeboxPlaybackProgressDidChange(_ jukebox: Jukebox) {
+        
+        if let currentTime = jukebox.currentItem?.currentTime, let duration = jukebox.currentItem?.meta.duration {
+            let value = Float(currentTime / duration)
+            sermonSlider.value = value
+            populateLabelWithTime(currentTimeLabel, time: currentTime)
+            populateLabelWithTime(durationLabel, time: duration)
+        } else {
+//            resetUI() // Check this later
+        }
+    }
+    
+    func jukeboxDidLoadItem(_ jukebox: Jukebox, item: JukeboxItem) {
+        print("Jukebox did load: \(item.URL.lastPathComponent)")
+
+    }
+    
+    func jukeboxDidUpdateMetadata(_ jukebox: Jukebox, forItem: JukeboxItem) {
+        print("Item updated:\n\(forItem)")
+    }
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weekLabel: UILabel!
@@ -21,11 +69,14 @@ class HomeVC: UIViewController {
     @IBOutlet weak var greetImage: UIImageView!
     @IBOutlet weak var greetText: UILabel!
     
-    
     @IBOutlet weak var audioPlayerView: UIView!
     @IBOutlet weak var playPauseBtn: UIButton!
     @IBOutlet weak var sermonSlider: UISlider!
     
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var sermonTitle: UILabel!
+    @IBOutlet weak var sermonPreacher: UILabel!
     
     @IBOutlet weak var goalView: UIView!
     
@@ -35,10 +86,15 @@ class HomeVC: UIViewController {
     
     let appDel = UIApplication.shared.delegate as! AppDelegate
     
+    var jukebox : Jukebox!
+    
     var player: AVAudioPlayer = AVAudioPlayer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
         let statusBarColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
@@ -52,7 +108,8 @@ class HomeVC: UIViewController {
         let month = calendar.component(.month, from: date)
         let week = calendar.component(.weekday, from: date)
         let hour = calendar.component(.hour, from: date)
-
+        
+        print("The day is \(day)")
         
         var monthName: String
         var weekName: String
@@ -119,28 +176,61 @@ class HomeVC: UIViewController {
             greeting = "HAVE A GREAT DAY"
         }
         
-//        if hour == 12 || 13 || 14 || 15 {
-//            greetText.text = "Good Afternoon"
-//        }
-        
         dateLabel.text = "\(day) \(monthName)"
         weekLabel.text = "\(weekName)"
         greetText.text = "\(greeting)"
         
         
+        UIApplication.shared.beginReceivingRemoteControlEvents()
         
-        do {
-            let audioPath = Bundle.main.path(forResource: "aug-ps-raj", ofType: "mp3")
-
-            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
-        } catch {
-            // Catch the error
+        appDel.ref.child("sermonplayer").child("sermonurl").observe(.value, with: { (snapshot) in
+            if let value = snapshot.value {
+                
+                print("The Sermon URL Value is \(String(describing: value))")
+                
+                self.jukebox = Jukebox(delegate: self, items: [JukeboxItem(URL: URL(string: value as! String)!)])
+                
+//                self.liveStreamTitle.text = (value as! String)
+                
+            } else {
+                print ("Some error")
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
         }
         
-        sermonSlider.maximumValue = Float(player.duration)
-        print("The Sermon duration is \(player.duration)")
+        appDel.ref.child("sermonplayer").child("sermonpreacher").observe(.value, with: { (snapshot) in
+            if let value = snapshot.value {
+                print("The Sermon Preacher Name is \(String(describing: value))")
+                
+//                self.jukebox = Jukebox(delegate: self, items: [JukeboxItem(URL: URL(string: value as! String)!)])
+                
+                self.sermonPreacher.text = (value as! String)
+                
+            } else {
+                print ("Some error")
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SermonSliderCustomise), userInfo: nil, repeats: true)
+        appDel.ref.child("sermonplayer").child("sermontitle").observe(.value, with: { (snapshot) in
+            if let value = snapshot.value {
+                print("The Sermon URL Value is \(String(describing: value))")
+                self.sermonTitle.text = (value as! String)
+
+//                self.jukebox = Jukebox(delegate: self, items: [JukeboxItem(URL: URL(string: value as! String)!)])
+                
+                
+            } else {
+                print ("Some error")
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         ApplyCornerRadius(viewName: greetView)
         ApplyCornerRadius(viewName: audioPlayerView)
@@ -167,65 +257,45 @@ class HomeVC: UIViewController {
         if sender.currentImage == #imageLiteral(resourceName: "play-btn") {
             sender.setImage(#imageLiteral(resourceName: "pause-btn"), for: .normal)
             
-            player.prepareToPlay()
-            player.play()
+            jukebox.play()
             
-            let session = AVAudioSession.sharedInstance()
-
-            do {
-                try session.setCategory(AVAudioSessionCategoryPlayback)
-            } catch {
-                // Catch the error
-            }
 
         } else {
             sender.setImage(#imageLiteral(resourceName: "play-btn"), for: .normal)
             print("This works")
-            player.pause()
+            jukebox.pause()
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//
-////        appDel.ref.child("sermonplayer").queryOrdered(byChild: "sermonurl").queryEqual(toValue : "Today")
-//
-//        appDel.ref.child("sermonplayer").child("sermonurl").observe(.value, with: { (snapshot) in
-//            if let value = snapshot.value {
-//                print("The Sermon URL Value is \(String(describing: value))")
-//
-//                self.SermonSuccess(value: value as! String)
-//
-//            } else {
-//                print ("Some error")
-//            }
-//
-//        }) { (error) in
-//            print(error.localizedDescription)
+
+//    func SermonSuccess(value: String) {
+
+//        do {
+////            let audioPath = Bundle.main.path(forResource: "aug-ps-raj", ofType: "mp3")
+////            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: value) as URL)
+//        } catch {
+//            // Catch the error
 //        }
+
 //    }
-
-    func SermonSuccess(value: String) {
-
-        do {
-//            let audioPath = Bundle.main.path(forResource: "aug-ps-raj", ofType: "mp3")
-            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: value) as URL)
-        } catch {
-            // Catch the error
-        }
-
-
-    }
     
     @IBAction func SermonSliderChanged(_ sender: AnyObject) {
-        player.stop()
-        playPauseBtn.setImage(#imageLiteral(resourceName: "play-btn"), for: .normal)
-        player.currentTime = TimeInterval(sermonSlider.value)
-        player.prepareToPlay()
+//        jukebox.stop()
+//        playPauseBtn.setImage(#imageLiteral(resourceName: "play-btn"), for: .normal)
+        if let duration = jukebox.currentItem?.meta.duration {
+            jukebox.seek(toSecond: Int(Double(sermonSlider.value) * duration))
+        }
     }
     
     @objc func SermonSliderCustomise() {
         
-        sermonSlider.value = Float(player.currentTime)
+    }
+    
+    
+    func populateLabelWithTime(_ label : UILabel, time: Double) {
+        let minutes = Int(time / 60)
+        let seconds = Int(time) - minutes * 60
+        
+        label.text = String(format: "%02d", minutes) + ":" + String(format: "%02d", seconds)
     }
     
     // Goals View
@@ -269,6 +339,29 @@ class HomeVC: UIViewController {
             print("Logged out")
         } catch {
             print("Signout error")
+        }
+    }
+    
+    override func remoteControlReceived(with event: UIEvent?) {
+        if event?.type == .remoteControl {
+            switch event!.subtype {
+            case .remoteControlPlay :
+                jukebox.play()
+            case .remoteControlPause :
+                jukebox.pause()
+            case .remoteControlNextTrack :
+                jukebox.playNext()
+            case .remoteControlPreviousTrack:
+                jukebox.playPrevious()
+            case .remoteControlTogglePlayPause:
+                if jukebox.state == .playing {
+                    jukebox.pause()
+                } else {
+                    jukebox.play()
+                }
+            default:
+                break
+            }
         }
     }
 

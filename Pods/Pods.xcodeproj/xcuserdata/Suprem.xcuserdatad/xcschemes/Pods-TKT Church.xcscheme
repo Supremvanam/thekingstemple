@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A77DFDD2A7F17C1BA5F9AE41BB7CB867"
+               BlueprintIdentifier = "FBB32403990CFF7384BD628493317174"
                BuildableName = "Pods_TKT_Church.framework"
                BlueprintName = "Pods-TKT Church"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A77DFDD2A7F17C1BA5F9AE41BB7CB867"
+            BlueprintIdentifier = "FBB32403990CFF7384BD628493317174"
             BuildableName = "Pods_TKT_Church.framework"
             BlueprintName = "Pods-TKT Church"
             ReferencedContainer = "container:Pods.xcodeproj">

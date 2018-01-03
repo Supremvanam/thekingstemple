@@ -271,7 +271,7 @@ Please enter the code down here to Get Started</string>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleAspectFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xb9-BX-nKA">
+                                                    <stackView opaque="NO" contentMode="scaleAspectFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="xb9-BX-nKA">
                                                         <rect key="frame" x="15" y="66" width="364" height="32"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KR-wx-F3v">
@@ -281,8 +281,8 @@ Please enter the code down here to Get Started</string>
                                                                     <action selector="PlayPauseAudioButton:" destination="Ior-IE-WyX" eventType="touchUpInside" id="gcP-8p-KLa"/>
                                                                 </connections>
                                                             </button>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="naA-kQ-IwN" customClass="DesignableSlider" customModule="TKT_Church" customModuleProvider="target">
-                                                                <rect key="frame" x="13" y="0.0" width="353" height="33"/>
+                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="naA-kQ-IwN" customClass="DesignableSlider" customModule="TKT_Church" customModuleProvider="target">
+                                                                <rect key="frame" x="23" y="0.0" width="343" height="33"/>
                                                                 <color key="minimumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="maximumTrackTintColor" red="0.54117647058823526" green="0.53333333333333333" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -312,20 +312,37 @@ Please enter the code down here to Get Started</string>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BH0-D9-X2E">
+                                                        <rect key="frame" x="67" y="100" width="37" height="19.333333333333371"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSK-Q2-2Qp">
+                                                        <rect key="frame" x="342" y="100" width="37" height="20"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="zgu-iE-isD" firstAttribute="centerX" secondItem="ey8-J3-kSQ" secondAttribute="centerX" id="BN3-R6-OLv"/>
                                                     <constraint firstItem="jvl-fs-CJ6" firstAttribute="leading" secondItem="ey8-J3-kSQ" secondAttribute="leading" constant="15" id="EYo-dL-2Zj"/>
                                                     <constraint firstItem="RuS-nv-iYN" firstAttribute="leading" secondItem="ey8-J3-kSQ" secondAttribute="leading" constant="15" id="JUd-YB-RAi"/>
+                                                    <constraint firstItem="CSK-Q2-2Qp" firstAttribute="top" secondItem="xb9-BX-nKA" secondAttribute="bottom" constant="2" id="Oo6-4E-vVL"/>
                                                     <constraint firstAttribute="trailing" secondItem="jvl-fs-CJ6" secondAttribute="trailing" constant="8" id="P6C-KW-PMO"/>
                                                     <constraint firstAttribute="trailing" secondItem="xb9-BX-nKA" secondAttribute="trailing" constant="15" id="VOp-i2-Nni"/>
+                                                    <constraint firstItem="CSK-Q2-2Qp" firstAttribute="centerY" secondItem="BH0-D9-X2E" secondAttribute="centerY" id="Vaw-Jm-BJ4"/>
                                                     <constraint firstItem="jvl-fs-CJ6" firstAttribute="top" secondItem="RuS-nv-iYN" secondAttribute="bottom" constant="5" id="WDW-Of-x0M"/>
                                                     <constraint firstItem="zgu-iE-isD" firstAttribute="top" secondItem="ey8-J3-kSQ" secondAttribute="top" constant="15" id="Xhp-7Y-1Kd"/>
                                                     <constraint firstItem="xb9-BX-nKA" firstAttribute="leading" secondItem="ey8-J3-kSQ" secondAttribute="leading" constant="15" id="f8p-xm-RtQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="RuS-nv-iYN" secondAttribute="trailing" constant="8" id="iq3-jf-SKn"/>
                                                     <constraint firstItem="RuS-nv-iYN" firstAttribute="top" secondItem="xb9-BX-nKA" secondAttribute="bottom" constant="30" id="kg6-Gd-xQK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CSK-Q2-2Qp" secondAttribute="trailing" constant="15" id="q3u-Ao-Ytm"/>
                                                     <constraint firstItem="xb9-BX-nKA" firstAttribute="top" secondItem="zgu-iE-isD" secondAttribute="bottom" constant="30" id="qZN-rm-Fgq"/>
+                                                    <constraint firstItem="BH0-D9-X2E" firstAttribute="leading" secondItem="ey8-J3-kSQ" secondAttribute="leading" constant="67" id="rhh-r6-S8j"/>
+                                                    <constraint firstItem="BH0-D9-X2E" firstAttribute="top" secondItem="xb9-BX-nKA" secondAttribute="bottom" constant="2" id="yGv-Ru-bSy"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzR-Sb-kRB">
@@ -557,14 +574,18 @@ Please enter the code down here to Get Started</string>
                     <connections>
                         <outlet property="audioPlayerView" destination="ey8-J3-kSQ" id="nMy-QF-0ih"/>
                         <outlet property="confessionView" destination="RpG-wf-Q0Q" id="Qjv-Ok-oXA"/>
+                        <outlet property="currentTimeLabel" destination="BH0-D9-X2E" id="f8f-Yj-qpz"/>
                         <outlet property="dateLabel" destination="aAB-ZF-93m" id="p9W-GO-hG6"/>
+                        <outlet property="durationLabel" destination="CSK-Q2-2Qp" id="PBZ-Q0-owf"/>
                         <outlet property="goalView" destination="jzR-Sb-kRB" id="NFR-gh-ih1"/>
                         <outlet property="greetImage" destination="nPm-fV-1Kz" id="fxF-xO-0qa"/>
                         <outlet property="greetText" destination="acd-r9-RSb" id="0ac-js-Srt"/>
                         <outlet property="greetView" destination="V18-ed-6W4" id="G2U-Yz-4W8"/>
                         <outlet property="logoutBtn" destination="f9D-Lu-fMA" id="m0W-mQ-cHW"/>
                         <outlet property="playPauseBtn" destination="5KR-wx-F3v" id="2Rg-U9-YL1"/>
+                        <outlet property="sermonPreacher" destination="jvl-fs-CJ6" id="gYP-cR-5JM"/>
                         <outlet property="sermonSlider" destination="naA-kQ-IwN" id="sNq-gu-JDZ"/>
+                        <outlet property="sermonTitle" destination="RuS-nv-iYN" id="09p-o9-wlC"/>
                         <outlet property="streakView" destination="U5X-kC-wD7" id="QZ7-Nj-cdb"/>
                         <outlet property="weekLabel" destination="hDs-a1-3MF" id="mis-Dw-uXw"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" id="USA-El-W0f"/>

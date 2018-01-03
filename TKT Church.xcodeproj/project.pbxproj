@@ -17,7 +17,6 @@
 		7C3DD8C81F7A5CC200047853 /* TKT_Church.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DD8C61F7A5CC200047853 /* TKT_Church.xcdatamodeld */; };
 		7C3DD8CA1F7A5CC200047853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C3DD8C91F7A5CC200047853 /* Assets.xcassets */; };
 		7C3DD8CD1F7A5CC200047853 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C3DD8CB1F7A5CC200047853 /* LaunchScreen.storyboard */; };
-		7C43E9F61FA5082A001B6EA8 /* aug-ps-raj.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7C43E9F51FA5079E001B6EA8 /* aug-ps-raj.mp3 */; };
 		7C43E9FA1FA53818001B6EA8 /* DesignableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43E9F91FA53817001B6EA8 /* DesignableSlider.swift */; };
 		7C5BD0411F7A790400230149 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C5BD0401F7A78F600230149 /* GoogleService-Info.plist */; };
 		7C5BD0441F7CF7B700230149 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5BD0431F7CF7B700230149 /* UIView+Extension.swift */; };
@@ -40,7 +39,6 @@
 		7C3DD8C91F7A5CC200047853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C3DD8CC1F7A5CC200047853 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C3DD8CE1F7A5CC200047853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C43E9F51FA5079E001B6EA8 /* aug-ps-raj.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "aug-ps-raj.mp3"; sourceTree = "<group>"; };
 		7C43E9F71FA50E74001B6EA8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7C43E9F91FA53817001B6EA8 /* DesignableSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableSlider.swift; sourceTree = "<group>"; };
 		7C5BD0401F7A78F600230149 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				7C5BD0431F7CF7B700230149 /* UIView+Extension.swift */,
 				7C5BD0471F7D071200230149 /* Constants.swift */,
 				7C5BD0491F7D10B400230149 /* UIButton+Extension.swift */,
-				7C43E9F51FA5079E001B6EA8 /* aug-ps-raj.mp3 */,
 				7C174F501F7D342900199A34 /* TKT Church.entitlements */,
 				7C43E9F91FA53817001B6EA8 /* DesignableSlider.swift */,
 			);
@@ -202,7 +199,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C43E9F61FA5082A001B6EA8 /* aug-ps-raj.mp3 in Resources */,
 				7C5BD0411F7A790400230149 /* GoogleService-Info.plist in Resources */,
 				7C3DD8CD1F7A5CC200047853 /* LaunchScreen.storyboard in Resources */,
 				7C3DD8CA1F7A5CC200047853 /* Assets.xcassets in Resources */,
@@ -240,6 +236,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TKT Church/Pods-TKT Church-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Jukebox/Jukebox.framework",
 				"${BUILT_PRODUCTS_DIR}/YouTubePlayer-Swift/YouTubePlayer_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -248,6 +245,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Jukebox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
