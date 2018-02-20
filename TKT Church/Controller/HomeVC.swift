@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 import FirebaseAuth
+import Firebase
 import Jukebox
 
 class HomeVC: UIViewController, JukeboxDelegate {
@@ -78,9 +79,9 @@ class HomeVC: UIViewController, JukeboxDelegate {
     @IBOutlet weak var sermonTitle: UILabel!
     @IBOutlet weak var sermonPreacher: UILabel!
     
-    @IBOutlet weak var goalView: UIView!
-    
     @IBOutlet weak var confessionView: UIView!
+    
+    @IBOutlet weak var giveOnlineView: UIView!
     
     @IBOutlet weak var streakView: UIView!
     
@@ -90,6 +91,11 @@ class HomeVC: UIViewController, JukeboxDelegate {
     
     var player: AVAudioPlayer = AVAudioPlayer()
     
+//    var testimony = [Post]()
+//    var feedArray = [Post]()
+//    var databaseRef: DatabaseReference!
+//    let cellScaling : CGFloat = 0.6
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -234,13 +240,14 @@ class HomeVC: UIViewController, JukeboxDelegate {
         
         ApplyCornerRadius(viewName: greetView)
         ApplyCornerRadius(viewName: audioPlayerView)
-        ApplyCornerRadius(viewName: goalView)
+//        ApplyCornerRadius(viewName: goalView)
         ApplyCornerRadius(viewName: confessionView)
+        ApplyCornerRadius(viewName: giveOnlineView)
         ApplyCornerRadius(viewName: streakView)
         ApplyCornerRadius(viewName: logoutBtn)
         
         audioPlayerView.setHorizontalGradientBackground(colorOne: Colors.lightBlue, colorTwo: Colors.darkBlue)
-        goalView.setHorizontalGradientBackground(colorOne: Colors.lightGreen, colorTwo: Colors.darkGreen)
+//        goalView.setHorizontalGradientBackground(colorOne: Colors.lightGreen, colorTwo: Colors.darkGreen)
         streakView.setDiagonalGradientBackground(colorOne: Colors.lightPurple, colorTwo: Colors.darkPurple)
         logoutBtn.setHorizontalGradientBackground(colorOne: Colors.darkRed, colorTwo: Colors.lightRed)
         
@@ -300,33 +307,41 @@ class HomeVC: UIViewController, JukeboxDelegate {
     
     // Goals View
     
-    @IBAction func PrayForAnHourButton(_ sender: UIButton) {
-        if sender.currentImage == #imageLiteral(resourceName: "goal-btn") {
-            sender.setImage(#imageLiteral(resourceName: "goal-tick"), for: .normal)
-        } else {
-            sender.setImage(#imageLiteral(resourceName: "goal-btn"), for: .normal)
-        }
-    }
-    @IBAction func ReadTheBibleButton(_ sender: UIButton) {
-        if sender.currentImage == #imageLiteral(resourceName: "goal-btn") {
-            sender.setImage(#imageLiteral(resourceName: "goal-tick"), for: .normal)
-        } else {
-            sender.setImage(#imageLiteral(resourceName: "goal-btn"), for: .normal)
-        }
-    }
-    @IBAction func ListenASermonButton(_ sender: UIButton) {
-        if sender.currentImage == #imageLiteral(resourceName: "goal-btn") {
-            sender.setImage(#imageLiteral(resourceName: "goal-tick"), for: .normal)
-        } else {
-            sender.setImage(#imageLiteral(resourceName: "goal-btn"), for: .normal)
-        }
+//    @IBAction func PrayForAnHourButton(_ sender: UIButton) {
+//        if sender.currentImage == #imageLiteral(resourceName: "goal-btn") {
+//            sender.setImage(#imageLiteral(resourceName: "goal-tick"), for: .normal)
+//        } else {
+//            sender.setImage(#imageLiteral(resourceName: "goal-btn"), for: .normal)
+//        }
+//    }
+//    @IBAction func ReadTheBibleButton(_ sender: UIButton) {
+//        if sender.currentImage == #imageLiteral(resourceName: "goal-btn") {
+//            sender.setImage(#imageLiteral(resourceName: "goal-tick"), for: .normal)
+//        } else {
+//            sender.setImage(#imageLiteral(resourceName: "goal-btn"), for: .normal)
+//        }
+//    }
+//    @IBAction func ListenASermonButton(_ sender: UIButton) {
+//        if sender.currentImage == #imageLiteral(resourceName: "goal-btn") {
+//            sender.setImage(#imageLiteral(resourceName: "goal-tick"), for: .normal)
+//        } else {
+//            sender.setImage(#imageLiteral(resourceName: "goal-btn"), for: .normal)
+//        }
+//    }
+//
+    
+//    Give Online
+    
+    @IBAction func GiveOnlineButtonTapped(_sender: UIButton) {
+        performSegue(withIdentifier: "giveOnlineSegue", sender: Any?.self)
+        print("Give Online Segue succesful")
     }
     
     // Confession View
     
     @IBAction func ConfessionButtonTapped(_sender: UIButton) {
         performSegue(withIdentifier: "confessionSegue", sender: Any?.self)
-        print("Segue succesful")
+        print("Confession Segue succesful")
     }
     
     // Logout
@@ -367,3 +382,33 @@ class HomeVC: UIViewController, JukeboxDelegate {
 
     
 }
+
+
+
+//extension HomeVC : UICollectionViewDataSource {
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return testimony.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TestimonyCell", for: indexPath) as! TestimonyCollectionViewCell
+//
+////        @IBOutlet weak var testimonyImageView: UIImageView!
+////        @IBOutlet weak var testimonyTitleLabel: UILabel!
+////        @IBOutlet weak var testimonyDescriptionLabel: UILabel!
+////        @IBOutlet weak var bgColorView: UIView!
+//
+//                cell.testimonyTitleLabel.text = testimony[indexPath.row].testimonyTitle
+//                cell.testimonyDescriptionLabel.text = testimony[indexPath.row].testimonyDescription
+//
+//
+//        return cell
+//
+//    }
+//}
+

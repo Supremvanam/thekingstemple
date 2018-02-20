@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B2EFBE2598E1F1A5CF56720 /* Pods_TKT_Church.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7644C66F8B6E1B97790872 /* Pods_TKT_Church.framework */; };
 		7C02A3131FA4A818004475A3 /* ConfessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C02A3121FA4A818004475A3 /* ConfessionViewController.swift */; };
+		7C0B5BD42011C5FA00BB056A /* WebKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B5BD32011C5FA00BB056A /* WebKitVC.swift */; };
 		7C174F521F7D3BAC00199A34 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C174F511F7D3BAC00199A34 /* AuthVC.swift */; };
 		7C325BC11F7FDB3E0058A4CB /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C325BC01F7FDB3D0058A4CB /* HomeVC.swift */; };
 		7C3DD8C01F7A5CBF00047853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3DD8BF1F7A5CBF00047853 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		260AEF3D2A78D5B264216EED /* Pods-TKT Church.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TKT Church.release.xcconfig"; path = "Pods/Target Support Files/Pods-TKT Church/Pods-TKT Church.release.xcconfig"; sourceTree = "<group>"; };
 		7C02A3121FA4A818004475A3 /* ConfessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfessionViewController.swift; sourceTree = "<group>"; };
+		7C0B5BD32011C5FA00BB056A /* WebKitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitVC.swift; sourceTree = "<group>"; };
 		7C174F501F7D342900199A34 /* TKT Church.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TKT Church.entitlements"; sourceTree = "<group>"; };
 		7C174F511F7D3BAC00199A34 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
 		7C325BC01F7FDB3D0058A4CB /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -71,6 +73,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7C1EF58020054E7100B2A2F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7C3DD8B31F7A5CBC00047853 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +101,7 @@
 		7C3DD8BE1F7A5CBF00047853 /* TKT Church */ = {
 			isa = PBXGroup;
 			children = (
+				7C1EF58020054E7100B2A2F7 /* Model */,
 				7C5BD0421F7CF75200230149 /* Controller */,
 				7C3DD8BF1F7A5CBF00047853 /* AppDelegate.swift */,
 				7C3DD8C31F7A5CC100047853 /* Main.storyboard */,
@@ -113,10 +123,11 @@
 			isa = PBXGroup;
 			children = (
 				7C3DD8C11F7A5CC000047853 /* LoginVC.swift */,
-				7C174F511F7D3BAC00199A34 /* AuthVC.swift */,
 				7C325BC01F7FDB3D0058A4CB /* HomeVC.swift */,
 				7C912D2A1F9087070075C307 /* LiveStreamVC.swift */,
 				7C02A3121FA4A818004475A3 /* ConfessionViewController.swift */,
+				7C174F511F7D3BAC00199A34 /* AuthVC.swift */,
+				7C0B5BD32011C5FA00BB056A /* WebKitVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0B5BD42011C5FA00BB056A /* WebKitVC.swift in Sources */,
 				7C5BD0481F7D071200230149 /* Constants.swift in Sources */,
 				7C325BC11F7FDB3E0058A4CB /* HomeVC.swift in Sources */,
 				7C3DD8C21F7A5CC000047853 /* LoginVC.swift in Sources */,
@@ -428,7 +440,7 @@
 				CODE_SIGN_ENTITLEMENTS = "TKT Church/TKT Church.entitlements";
 				DEVELOPMENT_TEAM = CU3HPXFG2N;
 				INFOPLIST_FILE = "TKT Church/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.supremvanam.TKT-Church";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,7 +457,7 @@
 				CODE_SIGN_ENTITLEMENTS = "TKT Church/TKT Church.entitlements";
 				DEVELOPMENT_TEAM = CU3HPXFG2N;
 				INFOPLIST_FILE = "TKT Church/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.supremvanam.TKT-Church";
 				PRODUCT_NAME = "$(TARGET_NAME)";
